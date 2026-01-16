@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Edit Employee</h1>
+      <form action="">
+           <table align="center">
+            <tr>
+                <td>
+
+                    <div class="title">
+                    <input type="text" id="title" name="title">Enter product title
+        </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="price">
+                        <input type="text" id="price" name="price">Enter the price
+                    </div>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                    <div class="image">
+                       <input type="text" id="img" name="img">Enter your item picture
+
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                    <div class="image">
+                       <input type="category" id="category" name="category">Enter your item Category
+                    </div>
+                </td>
+            </tr>
+<tr>
+    <td>
+
+        <button type="submit" id="btn">Update</button>
+    </td>
+</tr>
+</table>
+        </form>
+        <script>
+             let users=JSON.parse(localStorage.getItem("users"));
+             let editidx=parseInt(localStorage.getItem("editidx"));
+             console.log(editidx);
+    document.addEventListener('DOMContentLoaded',function(e){
+    e.preventDefault();
+    let name =document.getElementById('title');
+    let price=document.getElementById('price');
+    let img=document.getElementById('img');
+    let category=document.getElementById('category');
+    
+    users.forEach((e,idx) => {
+        if(editidx == idx){
+         //   return editidx == idx;
+         
+           name.value=users[editidx].name; 
+           price.value=users[editidx].price;
+           img.value=users[editidx].img;
+           category.value=users[editidx].category;
+       console.log(name,price,img,category);
+       console.log(users[editidx].name);
+        }
+    });
+    let newobj={
+        id:editidx,
+        name,
+        price,
+        img,
+        category
+    }
+    console.log(newobj);
+  //  users.slice(editidx,1,newobj);
+   // console.log(users);
+    // localStorage.setItem("users",JSON.stringify(users));
+    });
+        </script>
+</body>
+</html>

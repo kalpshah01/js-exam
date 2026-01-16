@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <style>
+    table{
+    border: 2px solid red;
+    color: white;
+    background-color: purple;
+    margin-left: 500px;
+}
+th{
+    color: white;
+}
+  </style>
+</head>
+<body>
+       <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+      
+    </div>
+  </div>
+</nav>
+    <input type="text" name="filter" id="search">Search
+    <button onclick="searching()">Search</button>
+  <table class="table-primary">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Img</th>
+            <th>Category</th>
+        </tr>
+        
+    </thead>
+    <tbody id="main">
+        <img src="" alt="" id="imgs">
+
+        
+    </tbody>
+  </table>
+   <footer>
+ <div class="card">
+  <div class="card-header">
+    Featured
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+</footer>
+  <script>
+      let users=JSON.parse(localStorage.getItem("users"));
+      let tbody=document.getElementById('main');
+    //   function searching(){
+    //     let find=document.getElementById('search').value;
+    //     users.filters((emp)=>
+    //     {
+    //        emp.name == find
+    //        console.log(emp);
+    //     }
+    //   );
+    // }
+    // function sort(){
+    //     users.forEach((e,idx)=>{
+    //         if(e.price > e+1.price){
+
+    //         }
+    //     })
+    // }
+    function delet(idx){
+        users.splice(idx,1);
+        console.log(users);
+        localStorage.setItem("users",JSON.stringify(users));
+        render();
+    }
+    function edit(idx){
+        localStorage.setItem("editidx",idx);
+        
+        window.location.href="./edit.html";
+
+    }
+  
+    function render(data=users){
+        tbody.innerHTML="";
+data.forEach((e,idx) => {
+            tbody.innerHTML+=`
+            <tr>
+            <td>${idx+1}</td>
+            <td>${e.name}</td>
+            <td>${e.price}</td>
+            <td>${e.img}</td>
+            <td>${e.category}</td>
+            <td><button onclick="edit(${idx})">edit</button> </td>
+            <td><button onclick="delet(${idx})">delete</button></td>
+        </tr>
+            `;
+        });
+    }
+      document.addEventListener('DOMContentLoaded',function(){
+        render();
+
+      })
+  </script>
+</body>
+</html>
