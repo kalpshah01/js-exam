@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="./index.html"><img src="./images/alexunder-hess-bWZAPKm0zZE-unsplash.jpg"
+                    alt="no" width="50px"></a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="../js/allitem.html">All employee</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="../js/edit.html">edit employee</a>
+                    </li>
+
+
+
+            </div>
+        </div>
+    </nav>
+    <h1>Edit Employee</h1>
+    <form action="">
+        <table align="center">
+            <tr>
+                <td>
+
+                    <div class="title">
+                        <input type="text" id="title" name="title">Enter product title
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="price">
+                        <input type="text" id="price" name="price">Enter the price
+                    </div>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                    <div class="image">
+                        <input type="url" id="img" name="img">Enter your item picture
+                        <br>
+                        <img id="imgPreview" width="150" alt="Image preview" style="margin-top:10px;">
+
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                    <div class="image">
+                        <input type="text" id="category" name="category">Enter your item Category
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+
+                    <button type="submit" id="btn">Update</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <footer class="bg-dark text-light mt-auto">
+        <div class="container py-4">
+            <div class="row">
+
+
+                <div class="col-md-6 mb-3 mb-md-0">
+                    <h5>Quick Links</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link p-0 text-light" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link p-0 text-light" href="#">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link p-0 text-light" href="#">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-6 text-md-end">
+                    <h5>Connect</h5>
+                    <a href="https://github.com/kalpshah" class="text-light fs-4 me-3" target="_blank">
+                        <i class="bi bi-github">Kalpshah01</i>
+                    </a>
+
+                    <a href="https://linkedin.com/in/kalpshah" class="text-light fs-4" target="_blank">
+                        <i class="bi bi-linkedin">Kalpshah</i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <hr class="border-secondary">
+
+        <div class="text-center">
+            <small>© 2026 Your Website. All rights reserved.</small>
+        </div>
+        </div>
+    </footer>
+    <script>
+
+        let users = JSON.parse(localStorage.getItem("users"));
+        let editidx = parseInt(localStorage.getItem("editidx"));
+        
+        edituser = users[editidx];
+        let name = document.getElementById('title');
+            let price = document.getElementById('price');
+            let img = document.getElementById('img');
+            let category = document.getElementById('category');
+           
+        document.addEventListener('DOMContentLoaded', function (e) {
+            
+      
+            
+            name.value = edituser.name;
+            price.value = edituser.price;
+            img.value = edituser.img;
+            category.value = edituser.category;
+           
+            document.getElementById('imgPreview').src = edituser.img;
+            
+          
+
+
+
+            
+            // window.location.href = "./allitem.html";
+        });
+          document.getElementById('img').addEventListener('input', function (e) {
+                e.preventDefault();
+                document.getElementById('imgPreview').src = this.value;
+            });
+
+        document.getElementById('btn').addEventListener('click',function(e){
+         e.preventDefault();
+            let newobj = {
+    id: editidx,
+    name: name.value,
+    price: price.value,
+    img: img.value,
+    category: category.value
+}
+
+            console.log(newobj);
+            users[editidx] = newobj;
+         
+            localStorage.setItem("users", JSON.stringify(users));
+            window.location.href="./allitem.html";
+        })
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
