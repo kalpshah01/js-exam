@@ -15,7 +15,7 @@
 <body class="d-flex flex-column min-vh-100">
  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="./index.html"><img src="./images/alexunder-hess-bWZAPKm0zZE-unsplash.jpg" alt="no" width="50px"></a>
+    <a class="navbar-brand" href="./index.html"><img src="./images/image.png" alt="no" width="80px"  id="logo"></a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
       data-bs-target="#navbarSupportedContent"
@@ -46,52 +46,43 @@
 </nav>
   <main class="flex-fill">
   <h2 class="text-center">Product form</h2>
-        <form action="" class="my-3 text-center">
-           <table align="center">
-            <tr>
-                <td>
+    <form action="" class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
 
-                    <div class="title">
-                        <label for="title">Enter product title</label>
-                    <input type="text" id="title" name="title">
-        </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="price">
-                        <label for="price">Enter the price</label>
-                        <input type="text" id="price" name="price">
-                    </div>
+      <div class="mb-3">
+        <label for="title" class="form-label">Enter product title</label>
+        <input type="text" id="title" name="title" class="form-control">
+      </div>
 
-                </td>
-            </tr>
-            <tr>
-                <td>
+      <div class="mb-3">
+        <label for="price" class="form-label">Enter the price</label>
+        <input type="text" id="price" name="price" class="form-control">
+      </div>
 
-                    <div class="image">
-                        <label for="img">Upload img</label>
-                       <input type="text" id="img" name="img">
-                </td>
-            </tr>
-            <tr>
-                <td>
+      <div class="mb-3">
+        <label for="img" class="form-label">Upload image</label>
+        <input type="text" id="img" name="img" class="form-control">
+      </div>
 
-                    <div class="image">
-                        <label for="category">Enter your item Category</label>
-                       <input type="category" id="category" name="category">
-                    </div>
-                </td>
-            </tr>
-<tr>
-    <td>
+      <div class="mb-4">
+        <label for="category" class="form-label">Enter item category</label>
+        <input type="text" id="category" name="category" class="form-control">
+      </div>
 
-    </td>
-</tr>
-</table>
-<button type="submit" id="btn">Submit</button>
-<a href="./allitem.html">All items</a>
-        </form>
+      <div class="d-flex gap-3">
+        <button type="submit" id="btn" class="btn btn-primary">
+          Submit
+        </button>
+        <a href="./allitem.html" class="btn btn-outline-secondary">
+          All items
+        </a>
+      </div>
+
+    </div>
+  </div>
+</form>
+
         </main>
  <footer class="bg-dark text-light mt-auto">
     <div class="container py-4">

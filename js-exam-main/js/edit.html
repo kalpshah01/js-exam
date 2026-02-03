@@ -15,8 +15,7 @@
 <body class="d-flex flex-column min-vh-100">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="./index.html"><img src="./images/alexunder-hess-bWZAPKm0zZE-unsplash.jpg"
-                    alt="no" width="50px"></a>
+             <a class="navbar-brand" href="./index.html"><img src="./images/image.png" alt="no" width="80px"  id="logo"></a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -43,52 +42,50 @@
             </div>
         </div>
     </nav>
-    <h1>Edit Employee</h1>
-    <form action="">
-        <table align="center">
-            <tr>
-                <td>
+    <form class="container my-5">
+        <h1 class="text-center">Edit Employee</h1>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
 
-                    <div class="title">
-                        <input type="text" id="title" name="title">Enter product title
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div class="price">
-                        <input type="text" id="price" name="price">Enter the price
-                    </div>
+      <div class="mb-3">
+        <label for="title" class="form-label">Enter product title</label>
+        <input type="text" id="title" name="title" class="form-control">
+      </div>
 
-                </td>
-            </tr>
-            <tr>
-                <td>
+      <div class="mb-3">
+        <label for="price" class="form-label">Enter the price</label>
+        <input type="text" id="price" name="price" class="form-control">
+      </div>
 
-                    <div class="image">
-                        <input type="url" id="img" name="img">Enter your item picture
-                        <br>
-                        <img id="imgPreview" width="150" alt="Image preview" style="margin-top:10px;">
+      <div class="mb-3">
+        <label for="img" class="form-label">Enter your item picture (URL)</label>
+        <input type="url" id="img" name="img" class="form-control">
 
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
+        <img
+          id="imgPreview"
+          class="img-thumbnail mt-3"
+          width="150"
+          alt="Image preview"
+        >
+      </div>
 
-                    <div class="image">
-                        <input type="text" id="category" name="category">Enter your item Category
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>
+      <div class="mb-4">
+        <label for="category" class="form-label">Enter your item category</label>
+        <input type="text" id="category" name="category" class="form-control">
+      </div>
 
-                    <button type="submit" id="btn">Update</button>
-                </td>
-            </tr>
-        </table>
-    </form>
+      <div class="text-center">
+        <button type="submit" id="btn" class="btn btn-primary px-4">
+          Update
+        </button>
+      </div>
+
+    </div>
+  </div>
+</form>
+
+
+
     <footer class="bg-dark text-light mt-auto">
         <div class="container py-4">
             <div class="row">
@@ -150,7 +147,7 @@
             img.value = edituser.img;
             category.value = edituser.category;
            
-            document.getElementById('imgPreview').src = edituser.img;
+            document.getElementById('imgPreview').src = "./images/"+edituser.img;
             
           
 
@@ -161,7 +158,7 @@
         });
           document.getElementById('img').addEventListener('input', function (e) {
                 e.preventDefault();
-                document.getElementById('imgPreview').src = this.value;
+                document.getElementById('imgPreview').src = "./images/"+this.value;
             });
 
         document.getElementById('btn').addEventListener('click',function(e){

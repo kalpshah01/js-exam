@@ -31,4 +31,5 @@ btn.addEventListener("click",function(e){
         localStorage.setItem("users",JSON.stringify(users));
         console.log(" data added");
     }
+    window.location.href="./allitem.html";
 });
